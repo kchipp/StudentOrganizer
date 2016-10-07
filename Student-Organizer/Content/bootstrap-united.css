@@ -5016,7 +5016,7 @@ a.badge:focus {
     font-size: 73px;
   }
 }
-.slide1, .slide2, .slide3 {
+.slide1, .slide2, .slide3, .slide4 {
     min-height: 300px;
     background-size: cover;
     background-position: center center;
@@ -5029,6 +5029,11 @@ a.badge:focus {
 }
 .slide3 {
     background-image: url(clocks1.jpg);
+
+}
+.slide4 {
+    background-image: url(TimeMgmt.jpg);
+
 }
 /* Carousel Fade Effect */
 .carousel.carousel-fade .item {
