@@ -5022,13 +5022,13 @@ a.badge:focus {
     background-position: center center;
 }
 .slide1 {
-    background-image: url(MU1.jpg);
+    background-image: url(MU2.jpg);
 }
 .slide2 {
-    background-image: url(students.jpg);
+    background-image: url(instruct1.jpg);
 }
 .slide3 {
-    background-image: url(clocks.jpg);
+    background-image: url(clocks1.jpg);
 }
 /* Carousel Fade Effect */
 .carousel.carousel-fade .item {

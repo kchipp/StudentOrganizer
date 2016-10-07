@@ -26,5 +26,11 @@ namespace Student_Organizer.Controllers
 
             return View();
         }
+        public ActionResult Description()
+        {
+            ViewBag.Message = "Services Description";
+
+            return View();
+        }
     }
 }

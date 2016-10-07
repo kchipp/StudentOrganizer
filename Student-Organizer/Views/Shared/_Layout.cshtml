@@ -17,13 +17,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Organize!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("collegeSync!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+               
+                
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
@@ -35,12 +35,16 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - RNK</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://cdn.smooch.io/smooch.min.js"></script>
+    <script>
+           Smooch.init({ appToken: 'chw91aeed1i0svha5tadonn2u' });
+    </script>
 </body>
 </html>
