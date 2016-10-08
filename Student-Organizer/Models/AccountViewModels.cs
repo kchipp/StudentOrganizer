@@ -79,6 +79,10 @@ namespace Student_Organizer.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Faculty Code", Prompt = "Enter Faculty Code if Applicable")]
+        [DataType(DataType.Text)]
+        public string FacultyCode { get; set; }
     }
 
     public class ResetPasswordViewModel

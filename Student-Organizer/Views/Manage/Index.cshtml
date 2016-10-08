@@ -23,65 +23,82 @@
             }
             ]
         </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-             
-             See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-             
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*  
-            <dt>Phone Number:</dt>
+        @if (Model.currentUser.Faculty_id != null)
+        {
+            <dt>testing:</dt>
             <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
+
+                <tr>
+                    <td>
+                    </td>
+                </tr>
             </dd>
-        *@
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
-        </dd>
+        }
+        else
+        {
+            <dt>
+                <tr>
+                    <td></td>
+                </tr>
+            </dt>
+        }
+
+
+
     </dl>
+    @Scripts.Render("https://www.dropbox.com/static/api/dropbox-datastores-1.2-latest.js")
+    @Scripts.Render("https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
+                        <script>
+                            var client = new Dropbox.Client({ key: 'su84u9gycf7c0fh', token: 'Bearer GA6FmJ7-kHkAAAAAAAAc3oMADmBCzI-VuHZxK4B7YSuj7Sfjwj1u58eJ0Q5tPkwN' });
+                            $(document).ready(function () {
+                                readDir();
+                            })
+                            client.authenticate({ interactive: false }, function (error, client) {
+                                if (error) {
+                                    alert('Error: ' + error);
+                                }
+                            });
+                            if (client.isAuthenticated() != true) {
+                                alert("fucken a")
+                            }
+                            if (client.isAuthenticated()) {
+                                reaDir();
+                            }
+                        function readDir() {
+                            client.readdir("/dcc group project", function (error, entries) {
+                                if (error) {
+                                    alert('Error: ', +error);
+                                } else {
+                                    //alert("Your Dropbox contains " + entries.join(", "));
+                                    $('#dl-horizontal').append("<br>Your Dropbox contains: <br>" + entries.join(", <br>")).fadeIn();
+                                }
+                            })
+                        }
+                        function reaDir() {
+                            var url = "https://api-content.dropbox.com";
+                            var headers = {
+                                'Authorization': 'Bearer GA6FmJ7-kHkAAAAAAAAc3oMADmBCzI-VuHZxK4B7YSuj7Sfjwj1u58eJ0Q5tPkwN'
+                            }
+
+                            var args = {
+                                url: url,
+                                type: 'GET',
+                                headers: headers,
+                                data: JSON.stringify({ "path": "/dcc group project/"}),
+                                contentType: 'application/json',
+                                success: function (data, textStatus, request) {
+                                    //var metadata = $.parseJSON(request.getResponseHeader('x-dropbox-metadata'));   //bawejakunal at http://stackoverflow.com/questions/31490074/download-file-via-dropbox-api-from-browser
+                                    //console.log("deleted");
+                                    alert("File has been deleted")
+                                },
+                                error: function (jqXHR) {
+                                    console.log(jqXHR);
+                                }
+                            };
+                            $.ajax(args);
+                            
+                        }
+                        </script>
+    
 </div>
+<div id="placeholder"></div>

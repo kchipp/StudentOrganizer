@@ -15,6 +15,8 @@ namespace Student_Organizer.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
+
 
         public ManageController()
         {
@@ -64,13 +66,17 @@ namespace Student_Organizer.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            user.Student = db.Students.Where(x => x.Student_id == user.Student_id).SingleOrDefault();
+            user.Faculty = db.Faculties.Where(y => y.Faculty_id == user.Faculty_id).SingleOrDefault();
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                currentUser = user
             };
             return View(model);
         }

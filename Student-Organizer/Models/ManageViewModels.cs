@@ -7,11 +7,15 @@ namespace Student_Organizer.Models
 {
     public class IndexViewModel
     {
+        public ApplicationDbContext db = new ApplicationDbContext();
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public ApplicationUser currentUser { get; set; }
+        public Student Student { get; set; }
+        public List<ApplicationUser> myUsers { get; set; }
     }
 
     public class ManageLoginsViewModel

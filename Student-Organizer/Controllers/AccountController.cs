@@ -17,6 +17,7 @@ namespace Student_Organizer.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private string facutlyCode = "1234";
 
         public AccountController()
         {
@@ -156,16 +157,25 @@ namespace Student_Organizer.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    if(model.FacultyCode != null)
+                    {
+                        if(facutlyCode == model.FacultyCode)
+                        {
+                            return RedirectToAction("Index", "Manage");
+                        }
+                        else
+                        {
+                            return View(model);
+                        }
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Manage");
+                    }
 
-                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
+
             }
 
             // If we got this far, something failed, redisplay form
