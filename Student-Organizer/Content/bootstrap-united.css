@@ -4986,6 +4986,15 @@ a.badge:focus {
 
 
 }
+.jumbotron-drop{
+     padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  color: inherit;
+  background-color: #eeeeee;
+  background-size : cover;
+  background-image: url(files.jpg)
+}
 .jumbotron h1,
 .jumbotron .h1 {
   margin-top: 15px;
