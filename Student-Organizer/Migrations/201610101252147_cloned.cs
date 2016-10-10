@@ -3,7 +3,7 @@ namespace Student_Organizer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class save : DbMigration
+    public partial class cloned : DbMigration
     {
         public override void Up()
         {
@@ -51,6 +51,10 @@ namespace Student_Organizer.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Student_id = c.Int(),
+                        Faculty_id = c.Int(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -64,6 +68,10 @@ namespace Student_Organizer.Migrations
                         UserName = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Faculties", t => t.Faculty_id)
+                .ForeignKey("dbo.Students", t => t.Student_id)
+                .Index(t => t.Student_id)
+                .Index(t => t.Faculty_id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
@@ -95,13 +103,17 @@ namespace Student_Organizer.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUsers", "Student_id", "dbo.Students");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUsers", "Faculty_id", "dbo.Faculties");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.AspNetUsers", new[] { "Faculty_id" });
+            DropIndex("dbo.AspNetUsers", new[] { "Student_id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");

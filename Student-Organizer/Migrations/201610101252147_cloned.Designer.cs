@@ -7,13 +7,13 @@ namespace Student_Organizer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class save : IMigrationMetadata
+    public sealed partial class cloned : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(save));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cloned));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610072308542_save"; }
+            get { return "201610101252147_cloned"; }
         }
         
         string IMigrationMetadata.Source

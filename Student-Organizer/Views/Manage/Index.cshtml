@@ -15,7 +15,8 @@
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink("Change your password", "ChangePassword")<button id="writeButton">Click to create <code>hello.txt</code> in Dropbox.</button>
+                <input id="stuff" />
             }
             else
             {
@@ -49,13 +50,13 @@
     @Scripts.Render("https://www.dropbox.com/static/api/dropbox-datastores-1.2-latest.js")
     @Scripts.Render("https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
                         <script>
-                            var client = new Dropbox.Client({ key: 'su84u9gycf7c0fh', token: 'Bearer GA6FmJ7-kHkAAAAAAAAc3oMADmBCzI-VuHZxK4B7YSuj7Sfjwj1u58eJ0Q5tPkwN' });
+                            var client = new Dropbox.Client({ key: 'ph7eppferwoc4qe'});
                             $(document).ready(function () {
-                                readDir();
+                               readDir();
                             })
                             client.authenticate({ interactive: false }, function (error, client) {
                                 if (error) {
-                                    alert('Error: ' + error);
+                                    alert('Error client not auth: ' + error);
                                 }
                             });
                             if (client.isAuthenticated() != true) {
@@ -67,25 +68,46 @@
                         function readDir() {
                             client.readdir("/dcc group project", function (error, entries) {
                                 if (error) {
-                                    alert('Error: ', +error);
+                                    alert('Error cant find dcc: ', +error);
                                 } else {
                                     //alert("Your Dropbox contains " + entries.join(", "));
-                                    $('#dl-horizontal').append("<br>Your Dropbox contains: <br>" + entries.join(", <br>")).fadeIn();
+                                    $('#stuff').append("<br>Your Dropbox contains: <br>" + entries.join(", <br>")).fadeIn();
                                 }
                             })
                         }
+
+
+                        document.getElementById('writeButton').onclick = function () {
+                            client.authenticate(function (error, client) {
+                                if (error) {
+                                    alert('Error: ' + error);
+                                } else {
+                                    doHelloWorld();
+                                }
+                            });
+                        }
+
+                        function doHelloWorld() {
+                            client.writeFile('dcc group project/hello.txt', $('#stuff').val(), function (error) {
+                                if (error) {
+                                    alert('Error: ' + error);
+                                } else {
+                                    alert('File written successfully!');
+                                }
+                            });
+                        }
                         function reaDir() {
-                            var url = "https://api-content.dropbox.com";
+                            var url = "https://content.dropboxapi.com";
                             var headers = {
-                                'Authorization': 'Bearer GA6FmJ7-kHkAAAAAAAAc3oMADmBCzI-VuHZxK4B7YSuj7Sfjwj1u58eJ0Q5tPkwN'
+                                'authorization': 'BYQAaDSBqzAAAAAAAAAACPN7rg9-MRXD5SwBWCHvkpbNqV4pvn8o777vFFNJQoxb'
                             }
 
                             var args = {
-                                url: url,
+                                url: reject_cors_preflight=true,
                                 type: 'GET',
                                 headers: headers,
                                 data: JSON.stringify({ "path": "/dcc group project/"}),
-                                contentType: 'application/json',
+                                contentType: 'text/plain; charset=dropbox-cors-hack',
                                 success: function (data, textStatus, request) {
                                     //var metadata = $.parseJSON(request.getResponseHeader('x-dropbox-metadata'));   //bawejakunal at http://stackoverflow.com/questions/31490074/download-file-via-dropbox-api-from-browser
                                     //console.log("deleted");
