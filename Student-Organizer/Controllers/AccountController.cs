@@ -170,7 +170,7 @@ namespace Student_Organizer.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Manage");
+                        return RedirectToAction("Create", "Students");
                     }
 
                 }
