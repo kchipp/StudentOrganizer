@@ -1228,7 +1228,10 @@ h6 .small,
   color: #aea79f;
 }
 h1,
-.h1,
+.h1{
+    font-size: 63px;
+    color: #ffcc00
+}
 h2,
 .h2,
 h3,
@@ -1275,7 +1278,7 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 63px;
 }
 h2,
 .h2 {
@@ -1301,15 +1304,16 @@ p {
   margin: 0 0 10px;
 }
 .lead {
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  font-size: 36px;
   font-weight: 300;
   line-height: 1.4;
-  color: #333333;
+  color: #f7ecb5;
 }
 @media (min-width: 768px) {
   .lead {
-    font-size: 21px;
+    font-size:32px;
   }
 }
 small,
@@ -3070,8 +3074,8 @@ fieldset[disabled] a.btn {
 }
 .btn-default {
   color: #ffffff;
-  background-color: #aea79f;
-  border-color: #aea79f;
+  background-color: #ffcc00;
+  border-color: #003366;
 }
 .btn-default:focus,
 .btn-default.focus {
@@ -3081,8 +3085,8 @@ fieldset[disabled] a.btn {
 }
 .btn-default:hover {
   color: #ffffff;
-  background-color: #978e83;
-  border-color: #92897e;
+  background-color: #003366;
+  border-color: #fcf0b7;
 }
 .btn-default:active,
 .btn-default.active,
@@ -3133,7 +3137,7 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary:focus,
 .btn-primary.focus {
   color: #ffffff;
-  background-color: #c34113;
+  background-color: #fcf0b7;
   border-color: #7d2a0c;
 }
 .btn-primary:hover {
@@ -3158,7 +3162,7 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #ffffff;
-  background-color: #a23610;
+  background-color: #fcf0b7;
   border-color: #7d2a0c;
 }
 .btn-primary:active,
