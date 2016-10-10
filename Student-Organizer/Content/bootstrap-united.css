@@ -5035,10 +5035,10 @@ a.badge:focus {
     background-image: url(clocks1.jpg);
 
 }
-.slide4 {
+/*.slide4 {
     background-image: url(TimeMgmt.jpg);
 
-}
+}*/
 /* Carousel Fade Effect */
 .carousel.carousel-fade .item {
     -webkit-transition: opacity 1s linear;
