@@ -7,13 +7,13 @@ namespace Student_Organizer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addedforeignkeyuserID : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedforeignkeyuserID));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610101705326_added foreign key userID"; }
+            get { return "201610102119256_initial"; }
         }
         
         string IMigrationMetadata.Source
