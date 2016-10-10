@@ -145,7 +145,7 @@
                                 success: function (data, textStatus, request) {
                                     //var metadata = $.parseJSON(request.getResponseHeader('x-dropbox-metadata'));   //bawejakunal at http://stackoverflow.com/questions/31490074/download-file-via-dropbox-api-from-browser
                                     //console.log("deleted");
-                                    alert("File has been deleted")
+                                    window.location.reload();
                                 },
                                 error: function (e) {
                                     console.log(e);
