@@ -5021,7 +5021,7 @@ a.badge:focus {
   }
   .jumbotron h1,
   .jumbotron .h1 {
-      padding-top: 12px;
+    padding-top: 12px;
     font-size: 73px;
   }
 }
@@ -5031,7 +5031,7 @@ a.badge:focus {
     background-position: center center;
 }
 .slide1 {
-    background-image: url(textbooks2.jpg);
+    background-image: url(MU2.jpg);
 }
 .slide2 {
     background-image: url(instruct1.jpg);
