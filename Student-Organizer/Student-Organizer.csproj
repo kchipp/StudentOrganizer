@@ -220,9 +220,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610101252147_cloned.cs" />
-    <Compile Include="Migrations\201610101252147_cloned.Designer.cs">
-      <DependentUpon>201610101252147_cloned.cs</DependentUpon>
+    <Compile Include="Migrations\201610101406014_save.cs" />
+    <Compile Include="Migrations\201610101406014_save.Designer.cs">
+      <DependentUpon>201610101406014_save.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -251,6 +251,7 @@
     <Content Include="Content\CollegiateFLF.ttf" />
     <Content Include="fonts\CollegiateFLF.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FileSaver.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -322,8 +323,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610101252147_cloned.resx">
-      <DependentUpon>201610101252147_cloned.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610101406014_save.resx">
+      <DependentUpon>201610101406014_save.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

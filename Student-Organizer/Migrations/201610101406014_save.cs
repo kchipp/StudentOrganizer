@@ -3,7 +3,7 @@ namespace Student_Organizer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class cloned : DbMigration
+    public partial class save : DbMigration
     {
         public override void Up()
         {
