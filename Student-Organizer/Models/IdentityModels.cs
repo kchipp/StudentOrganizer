@@ -43,5 +43,7 @@ namespace Student_Organizer.Models
         public System.Data.Entity.DbSet<Student_Organizer.Models.Student> Students { get; set; }
 
         public System.Data.Entity.DbSet<Student_Organizer.Models.Faculty> Faculties { get; set; }
+
+        public DbSet<Event> Events { get; set; }
     }
 }
