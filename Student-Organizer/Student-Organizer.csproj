@@ -221,9 +221,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610101604471_changes.cs" />
-    <Compile Include="Migrations\201610101604471_changes.Designer.cs">
-      <DependentUpon>201610101604471_changes.cs</DependentUpon>
+    <Compile Include="Migrations\201610101655255_dropbox.cs" />
+    <Compile Include="Migrations\201610101655255_dropbox.Designer.cs">
+      <DependentUpon>201610101655255_dropbox.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -315,6 +315,7 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Manage\Dropbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -330,8 +331,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610101604471_changes.resx">
-      <DependentUpon>201610101604471_changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610101655255_dropbox.resx">
+      <DependentUpon>201610101655255_dropbox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

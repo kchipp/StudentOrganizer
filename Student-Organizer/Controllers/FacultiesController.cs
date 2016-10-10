@@ -68,7 +68,7 @@ namespace Student_Organizer.Controllers
                     entry.Property(e => e.Faculty_id).IsModified = true;
                     con.SaveChanges();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(faculty);
