@@ -213,6 +213,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FacultiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -224,8 +225,17 @@
     <Compile Include="Migrations\201610101252147_cloned.Designer.cs">
       <DependentUpon>201610101252147_cloned.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610101416587_added class Event.cs" />
+    <Compile Include="Migrations\201610101416587_added class Event.Designer.cs">
+      <DependentUpon>201610101416587_added class Event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101420361_added class to identity model.cs" />
+    <Compile Include="Migrations\201610101420361_added class to identity model.Designer.cs">
+      <DependentUpon>201610101420361_added class to identity model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -307,6 +317,11 @@
     <Content Include="Views\Faculties\Details.cshtml" />
     <Content Include="Views\Faculties\Edit.cshtml" />
     <Content Include="Views\Faculties\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +339,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610101252147_cloned.resx">
       <DependentUpon>201610101252147_cloned.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101416587_added class Event.resx">
+      <DependentUpon>201610101416587_added class Event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101420361_added class to identity model.resx">
+      <DependentUpon>201610101420361_added class to identity model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
