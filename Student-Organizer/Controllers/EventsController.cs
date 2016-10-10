@@ -121,14 +121,19 @@ namespace Student_Organizer.Controllers
 
         public void ShareEvents(List<string>ClassEnrollmentList)
         {
-            for (int j=0; j<ClassEnrollmentList.Count(); j++)
+            List<Event> tempList = new List<Event>();
+            List<Event> EventList = db.Events.Where(g => g.UserId == myUser.Id).Select(z=>z).ToList();
+            for (int k = 0; k < EventList.Count; k++)
             {
-                List<Event> EventList = db.Events.Where(g => g.UserId == myUser.Id).ToList();
-                for (int i = 0; i < ClassEnrollmentList.Count(); i++)
+                tempList.Add(EventList[k]);
+            }
+            for (int j = 0; j < ClassEnrollmentList.Count(); j++)
+            {
+                for (int i = 0; i < tempList.Count(); i++)
                 {
-                    //EventList[i].UserId = db.Users.userId.Where(y => y.Email == ClassEnrollmentList[j]);
-                    db.Events.Add(EventList[i]);
-
+                    var email = ClassEnrollmentList[j];
+                    tempList[i].UserId = db.Users.Where(v => v.Email == email).First().Id;
+                    db.Events.Add(tempList[i]);
                 }
                 
             }
