@@ -7,12 +7,9 @@
 <div class="jumbotron">
     <h1 style="text-align: center">Calendar</h1>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <div id="calendar" width="80%"></div>
-    </div>
+
+<div>
     <button onclick="$('#shareCalendar').show()">Share Calendar</button>
-        </div>
 
     <div id="shareCalendar" style="display: none;">
         <form id="shareEventForm" class="well" action="/Events/ShareEvents" method="POST">
@@ -21,7 +18,14 @@
             <label>Enter the email addresses of the people you would like to share this calendar with, separated by commas.</label>
             <input type="text" id="classList" name="ClassEnrollmentList"><br />
             <input type="Submit" id="shareEventsButton">
-            </form>
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div id="calendar" width="80%"></div>
+    </div>
     </div>
 
     <div id="eventForm" style="display: none;">
