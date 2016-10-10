@@ -4978,11 +4978,11 @@ a.badge:focus {
 .jumbotron {
   padding-top: 30px;
   padding-bottom: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: inherit;
   background-color: #eeeeee;
   background-size : cover;
-  background-image: url(Calendar.jpg)
+  background-image : url()
 
 
 }

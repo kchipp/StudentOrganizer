@@ -20,6 +20,11 @@ namespace Student_Organizer
                 defaults: new { controller = "Home", action = "Description", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "ToRegister",
+                url: "account/register",
+                defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                name: "Default",
                url: "{controller}/{action}/{id}",
                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
