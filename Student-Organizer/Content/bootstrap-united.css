@@ -1279,7 +1279,7 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 63px;
+  font-size: 70px;
 }
 h2,
 .h2 {
@@ -5025,13 +5025,13 @@ a.badge:focus {
     font-size: 73px;
   }
 }
-.slide1, .slide2, .slide3, .slide4 {
+.slide1, .slide2, .slide3 {
     min-height: 300px;
     background-size: cover;
     background-position: center center;
 }
 .slide1 {
-    background-image: url(MU2.jpg);
+    background-image: url(textbooks2.jpg);
 }
 .slide2 {
     background-image: url(instruct1.jpg);
@@ -5040,10 +5040,6 @@ a.badge:focus {
     background-image: url(clocks1.jpg);
 
 }
-/*.slide4 {
-    background-image: url(TimeMgmt.jpg);
-
-}*/
 /* Carousel Fade Effect */
 .carousel.carousel-fade .item {
     -webkit-transition: opacity 1s linear;
