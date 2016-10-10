@@ -165,7 +165,15 @@ namespace Student_Organizer.Controllers
             }
             return RedirectToAction("Index", "Manage");
         }
-
+        public ActionResult Dropbox()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());           
+            var model = new IndexViewModel
+            {
+                currentUser = user
+            };
+            return View(model);
+        }
         //
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)

@@ -7,13 +7,13 @@ namespace Student_Organizer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addedclassEvent : IMigrationMetadata
+    public sealed partial class dropbox : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedclassEvent));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(dropbox));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610101416587_added class Event"; }
+            get { return "201610101655255_dropbox"; }
         }
         
         string IMigrationMetadata.Source

@@ -161,7 +161,7 @@ namespace Student_Organizer.Controllers
                     {
                         if(facutlyCode == model.FacultyCode)
                         {
-                            return RedirectToAction("Index", "Manage");
+                            return RedirectToAction("Create", "Faculties");
                         }
                         else
                         {
@@ -170,7 +170,7 @@ namespace Student_Organizer.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Manage");
+                        return RedirectToAction("Create", "Students");
                     }
 
                 }

@@ -3,7 +3,7 @@ namespace Student_Organizer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addedclassEvent : DbMigration
+    public partial class dropbox : DbMigration
     {
         public override void Up()
         {

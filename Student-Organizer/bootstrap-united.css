@@ -1279,7 +1279,7 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 70px;
+  font-size: 63px;
 }
 h2,
 .h2 {
@@ -4978,11 +4978,11 @@ a.badge:focus {
 .jumbotron {
   padding-top: 30px;
   padding-bottom: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: inherit;
   background-color: #eeeeee;
   background-size : cover;
-  background-image: url(Calendar.jpg)
+  background-image : url()
 
 
 }
@@ -5021,11 +5021,11 @@ a.badge:focus {
   }
   .jumbotron h1,
   .jumbotron .h1 {
-    padding-top: 12px;
+      padding-top: 12px;
     font-size: 73px;
   }
 }
-.slide1, .slide2, .slide3 {
+.slide1, .slide2, .slide3, .slide4 {
     min-height: 300px;
     background-size: cover;
     background-position: center center;
@@ -5040,6 +5040,10 @@ a.badge:focus {
     background-image: url(clocks1.jpg);
 
 }
+/*.slide4 {
+    background-image: url(TimeMgmt.jpg);
+
+}*/
 /* Carousel Fade Effect */
 .carousel.carousel-fade .item {
     -webkit-transition: opacity 1s linear;
