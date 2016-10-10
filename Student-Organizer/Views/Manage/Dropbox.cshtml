@@ -14,12 +14,6 @@
         <dd>
             <input id="stuff" placeholder="file name ie: hello.txt" />
         </dd>
-
-        <dt>Read File:</dt>
-        <dd>
-            <button id="readButton">Click to read.</button>
-        </dd>
-
         <dt>Download File:</dt>
         <dd>
             <button id="getFile" onclick="downloadFile()">Get File</button>
@@ -95,31 +89,31 @@
                         //        }
                         //    });
                         //}
-                        function readHelloworld() {
-                            client.readFile("dcc group project/" + $('#stuff').val(), function (error, data) {
-                                if (error) {
-                                    alert('Error: ' + error);
-                                }
-                                //alert(data);
-                                //$(data).insertBefore('#stuff').fadeIn(1000);
-                                $('#readMe').append(data + "<br>").fadeIn();
-                            })
-                        }
+                        //function readHelloworld() {
+                        //    client.readFile("dcc group project/" + $('#stuff').val(), function (error, data) {
+                        //        if (error) {
+                        //            alert('Error: ' + error);
+                        //        }
+                        //        //alert(data);
+                        //        //$(data).insertBefore('#stuff').fadeIn(1000);
+                        //        $('#readMe').append(data + "<br>").fadeIn();
+                        //    })
+                        //}
+                        //document.getElementById('readButton').onclick = function () {
+                        //    client.authenticate(function (error, client) {
+                        //        if (error) {
+                        //            alert('Error: ' + error);
+                        //        } else {
+                        //            readHelloworld();
+                        //        }
+                        //    })
+                        //}
                         document.getElementById('del').onclick = function () {
                             client.authenticate(function (error, client) {
                                 if (error) {
                                     alert('Error: ' + error);
                                 } else {
                                     delFile();
-                                }
-                            })
-                        }
-                        document.getElementById('readButton').onclick = function () {
-                            client.authenticate(function (error, client) {
-                                if (error) {
-                                    alert('Error: ' + error);
-                                } else {
-                                    readHelloworld();
                                 }
                             })
                         }
@@ -173,26 +167,26 @@
                             }
 
                         }
-                        function getFiles() {    //this works! I see nothing yet
+                        //function getFiles() {    //this works! I see nothing yet
 
-                            $.ajax({
-                                url: 'https://content.dropboxapi.com/2/files/download',
-                                type: 'GET',
-                                //'User-Agent': 'api-explorer-client',
-                                headers: {
-                                    "Authorization": "Bearer BYQAaDSBqzAAAAAAAAAACPN7rg9-MRXD5SwBWCHvkpbNqV4pvn8o777vFFNJQoxb",
-                                    "Dropbox-API-Arg": '{"path": "/public/hello.txt"}'
-                                },
-                                success: function (result) {
-                                    console.log(name);
-                                    alert("IT WORKED!");
-                                },
-                                error: function () {
-                                    console.log("error");
-                                }
-                            })
+                        //    $.ajax({
+                        //        url: 'https://content.dropboxapi.com/2/files/download',
+                        //        type: 'GET',
+                        //        //'User-Agent': 'api-explorer-client',
+                        //        headers: {
+                        //            "Authorization": "Bearer BYQAaDSBqzAAAAAAAAAACPN7rg9-MRXD5SwBWCHvkpbNqV4pvn8o777vFFNJQoxb",
+                        //            "Dropbox-API-Arg": '{"path": "/public/hello.txt"}'
+                        //        },
+                        //        success: function (result) {
+                        //            console.log(name);
+                        //            alert("IT WORKED!");
+                        //        },
+                        //        error: function () {
+                        //            console.log("error");
+                        //        }
+                        //    })
 
-                        }
+                        //}
                         function downloadFile() {   //this works!
                             var url = "https://content.dropboxapi.com/2/files/download";
                             var filename = $('#stuff').val();
