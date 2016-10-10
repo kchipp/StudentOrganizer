@@ -58,6 +58,8 @@
     </dl>
     @Scripts.Render("https://www.dropbox.com/static/api/dropbox-datastores-1.2-latest.js")
     @Scripts.Render("https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
+    <script src="~/Scripts/FileSaver.js"></script>
+
                         <script>
                             var client = new Dropbox.Client({ key: 'ph7eppferwoc4qe'});
                             $(document).ready(function () {
@@ -200,10 +202,10 @@
                         }
                         function downloadFile() {   //this works! 
                             var url = "https://content.dropboxapi.com/2/files/download";
-                            var file = $('#stuff').val();
+                            var filename = $('#stuff').val();
                             var headers = {
-                                'Authorization': 'Bearer BYQAaDSBqzAAAAAAAAAACPN7rg9-MRXD5SwBWCHvkpbNqV4pvn8o777vFFNJQoxb',
-                                'Dropbox-API-Arg': '{"path": "/dcc group project/' + file + '"}'
+                                'authorization': 'Bearer BYQAaDSBqzAAAAAAAAAACPN7rg9-MRXD5SwBWCHvkpbNqV4pvn8o777vFFNJQoxb',
+                                'Dropbox-API-Arg': '{"path": "/dcc group project/' + filename + '"}'
                             };
                             var args = {
                                 url: url,
@@ -211,9 +213,19 @@
                                 type: 'GET',
                                 success: function (data) {
                                     //var metadata = $.parseJSON(request.getResponseHeader('x-dropbox-metadata'));   //bawejakunal at http://stackoverflow.com/questions/31490074/download-file-via-dropbox-api-from-browser
-                                    console.log(data.name);
-                                    var file = new Blob([data], { type: 'text/plain;charset=utf-8' });
-                                    saveAs(file, file);
+                                    console.log(data);
+                                    var fileExt = $('#stuff').val().split('.').pop();
+                                    if (fileExt == 'txt') {
+                                        var file = new Blob([data], { type: 'text/plain;charset=utf-8' });
+                                    }
+                                    else if (fileExt == 'jpg')
+                                    {
+                                        var file = new Blob([data], { type: 'image/png' });
+                                    }
+                                    else if (fileExt == 'pdf') {
+                                        var file = new Blob([data], { type: 'application/pdf' });
+                                    }
+                                    saveAs(file, filename);
                                 },
                                 error: function (e) {
                                     console.log(e);
