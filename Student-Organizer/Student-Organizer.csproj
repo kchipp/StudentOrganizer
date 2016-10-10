@@ -221,10 +221,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610101406014_save.cs" />
-    <Compile Include="Migrations\201610101406014_save.Designer.cs">
-      <DependentUpon>201610101406014_save.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201610101416587_added class Event.cs" />
     <Compile Include="Migrations\201610101416587_added class Event.Designer.cs">
       <DependentUpon>201610101416587_added class Event.cs</DependentUpon>
@@ -232,6 +228,10 @@
     <Compile Include="Migrations\201610101420361_added class to identity model.cs" />
     <Compile Include="Migrations\201610101420361_added class to identity model.Designer.cs">
       <DependentUpon>201610101420361_added class to identity model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101705326_added foreign key userID.cs" />
+    <Compile Include="Migrations\201610101705326_added foreign key userID.Designer.cs">
+      <DependentUpon>201610101705326_added foreign key userID.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -338,14 +338,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610101406014_save.resx">
-      <DependentUpon>201610101406014_save.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610101416587_added class Event.resx">
       <DependentUpon>201610101416587_added class Event.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610101420361_added class to identity model.resx">
       <DependentUpon>201610101420361_added class to identity model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101705326_added foreign key userID.resx">
+      <DependentUpon>201610101705326_added foreign key userID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

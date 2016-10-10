@@ -6,6 +6,7 @@ using Student_Organizer.Models;
 using System.Globalization;
 using System.Web.Script.Serialization;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Student_Organizer.Models
 {
@@ -14,6 +15,11 @@ namespace Student_Organizer.Models
     {
         [Key]
         public int id { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
         public string eventID { get; set; }
         public string title { get; set; }
         public string description { get; set; }
@@ -24,6 +30,8 @@ namespace Student_Organizer.Models
         public DateTime start { get; set; }
         public DateTime end { get; set; }
         public string url { get; set; }
+
+
 
         public string calendarDataHolder;
         public List<Event> EventList;

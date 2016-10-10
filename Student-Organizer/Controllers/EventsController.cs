@@ -14,19 +14,25 @@ using System.Globalization;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 using System.IO;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Student_Organizer.Controllers
 {
     public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationUser myUser = System.Web.HttpContext.Current.GetOwinContext().
+                GetUserManager<ApplicationUserManager>().
+                FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
 
         public ActionResult Index()
         {
-            var eventList = db.Events.ToList();
+            //var eventList = db.Events.ToList();
+            var eventList = db.Events.Where(g=> g.UserId == myUser.Id).ToList();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string json = serializer.Serialize(eventList);
-            return View(new Event() { calendarDataHolder = json });
+            string jsonEvents = SerializeCalendarEventList(eventList);
+            return View(new Event() { calendarDataHolder = jsonEvents});
         }
 
         public ActionResult About()
@@ -46,6 +52,7 @@ namespace Student_Organizer.Controllers
             data.start = Convert.ToDateTime(data.startDate + " " + data.startTime);
             data.end = Convert.ToDateTime(data.endDate + " " + data.endTime);
             data.eventID = (data.title + data.startTime + data.endTime);
+            data.UserId = myUser.Id;
             db.Events.Add(data);
             db.SaveChanges();
             Response.Redirect("http://localhost:35591/Events/Index");
@@ -92,6 +99,13 @@ namespace Student_Organizer.Controllers
             db.SaveChanges();
             Response.Redirect("http://localhost:35591/Events/Index");
         }
+        public string SerializeCalendarEventList(List<Event> EventList)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string json = serializer.Serialize(EventList);
+            return json;
+
+        }
         private Event DeserializeObject(string dataRow)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Event));
@@ -103,6 +117,24 @@ namespace Student_Organizer.Controllers
             myStream.Close();
             return myEvent;
         }
+
+
+        public void ShareEvents(List<string>ClassEnrollmentList)
+        {
+            for (int j=0; j<ClassEnrollmentList.Count(); j++)
+            {
+                List<Event> EventList = db.Events.Where(g => g.UserId == myUser.Id).ToList();
+                for (int i = 0; i < ClassEnrollmentList.Count(); i++)
+                {
+                    //EventList[i].UserId = db.Users.userId.Where(y => y.Email == ClassEnrollmentList[j]);
+                    db.Events.Add(EventList[i]);
+
+                }
+                
+            }
+            db.SaveChanges();
+        }
+
     }
 }
 
