@@ -32,7 +32,7 @@
         <dd>
             <form enctype="multipart/form-data">
                 <input id="files" type="file" name="files[]" multiple />
-                <input type="submit" id="submit" name="submitBtn" value="upload" onclick="handleFileSelect()" />
+                <button type="submit" id="submit" name="submitBtn" onclick="handleFileSelect()">Upload</button>
             </form>
         </dd>
         @if (Model.currentUser.Faculty_id != null)
