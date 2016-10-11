@@ -58,8 +58,8 @@ namespace Student_Organizer.Controllers
         {
             data.start = Convert.ToDateTime(data.startDate + " " + data.startTime);
             data.end = Convert.ToDateTime(data.endDate + " " + data.endTime);
-            data.eventID = (data.title + data.startDate + data.startTime);
             data.UserId = myUser.Id;
+            data.eventID = (data.title + data.UserId + data.startDate + data.startTime);
             db.Events.Add(data);
             db.SaveChanges();
             Response.Redirect("http://localhost:35591/Events/Index");
@@ -163,7 +163,6 @@ namespace Student_Organizer.Controllers
                 {
                     var email = ClassEnrollmentList[j];
                     tempList[i].UserId = db.Users.Where(v => v.Email == email).FirstOrDefault().Id;
-
                     db.Events.Add(tempList[i]);
                 }
                 db.SaveChanges();
