@@ -28,12 +28,18 @@ namespace Student_Organizer.Controllers
 
         public ActionResult Index()
         {
-            //var eventList = db.Events.ToList();
-            var eventList = db.Events.Where(g=> g.UserId == myUser.Id).ToList().GroupBy(x => x.eventID).Select(y => y.First()).ToList();
-            //var distinctEvents = eventList.GroupBy(x => x.eventID).Select(y => y.First());
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            string jsonEvents = SerializeCalendarEventList(eventList);
-            return View(new Event() { calendarDataHolder = jsonEvents});
+            try
+            {
+                var eventList = db.Events.Where(g => g.UserId == myUser.Id).
+                ToList().GroupBy(x => x.eventID).Select(y => y.First()).ToList();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string jsonEvents = SerializeCalendarEventList(eventList);
+                return View(new Event() { calendarDataHolder = jsonEvents });
+            }
+            catch
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult About()
@@ -138,6 +144,8 @@ namespace Student_Organizer.Controllers
             for (int k = 0; k < EventList.Count; k++)
             {
                 tempList.Add(EventList[k]);
+                tempList[k].editable = false;
+                tempList[k].backgroundColor = "gray";
             }
             return tempList;
         }
@@ -155,8 +163,7 @@ namespace Student_Organizer.Controllers
                 {
                     var email = ClassEnrollmentList[j];
                     tempList[i].UserId = db.Users.Where(v => v.Email == email).FirstOrDefault().Id;
-                    tempList[i].backgroundColor = "gray";
-                    tempList[i].editable = false;
+
                     db.Events.Add(tempList[i]);
                 }
                 db.SaveChanges();
