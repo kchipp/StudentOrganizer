@@ -11,6 +11,8 @@
     <div class="col-md-12">
         <div id="calendar" width="80%"></div>
     </div>
+    <br />
+    <br />
     <button onclick="$('#shareCalendar').show()">Share Calendar</button>
         </div>
 
@@ -18,8 +20,10 @@
         <form id="shareEventForm" class="well" action="/Events/ShareEvents" method="POST">
             <input type="hidden" id="eventID"><br />
             <input type="hidden" id="userId" name="UserId"><br />
+            <label>Enter the color of the events you would like to share.</label>
+            <input type="text" id="color" name="backgroundColor"><br />
             <label>Enter the email addresses of the people you would like to share this calendar with, separated by commas.</label>
-            <input type="text" id="classList" name="ClassEnrollmentList"><br />
+            <input type="text" id="emails" name="emails"><br />
             <input type="Submit" id="shareEventsButton">
             </form>
     </div>
@@ -42,6 +46,8 @@
                 <input type="date" id="newEventEndDate" name="endDate"><br />
                 <label>Scheduled end time</label>
                 <input type="time" id="newEventEndTime" name="endTime"><br />
+                <label>Event Color:  red, yellow, blue</label>
+                <input type="text" id="newEventColor" name="backgroundColor"><br />
                 <input type="Submit" id="submitButton">
             </form>
         </div>
@@ -65,8 +71,11 @@
                 <input type="date" id="oldEventEndDate" name="endDate"><br />
                 <label>Scheduled end time</label>
                 <input type="time" id="oldEventEndTime" name="endTime"><br />
+                <label>Event Color:  red, yellow, blue</label>
+                <input type="text" id="oldEventColor" name="backgroundColor"><br />
                 <button type="submit" formmethod="post" formaction="/Events/UpdateEvent">Update</button>
                 <button type="submit" formmethod="post" formaction="/Events/DeleteEvent">Delete</button>
+                <button type="submit" formmethod="post" formaction="/Events/SaveEvent">Create New</button>
                 <button onclick="$('#calendar').fullCalendar('refetchEvents')">Cancel</button>
 
             </form>
@@ -93,8 +102,15 @@
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay,listWeek'
                     },
+                    themeButtonIcons: {
+                        prev: 'circle-triangle-w',
+                        next: 'circle-triangle-e',
+                        prevYear: 'seek-prev',
+                        nextYear: 'seek-next'
+                    },
                     contentHeight: 'auto',
                     theme: true,
+                    eventColor: 'dark blue',
                     nowIndicator: true,
                     defaultView: 'month',
                     editable: true,
@@ -120,6 +136,7 @@
                         $('#oldEventStartTime').val(calEvent.startTime);
                         $('#oldEventEndDate').val(calEvent.endDate);
                         $('#oldEventEndTime').val(calEvent.endTime);
+                        $('#oldEventColor').val(calEvent.bacgroundColor);
 
                     },
                 });

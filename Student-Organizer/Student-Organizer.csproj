@@ -225,6 +225,18 @@
     <Compile Include="Migrations\201610102129486_after clone.Designer.cs">
       <DependentUpon>201610102129486_after clone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610110132141_changed eventColor to backgroundColor.cs" />
+    <Compile Include="Migrations\201610110132141_changed eventColor to backgroundColor.Designer.cs">
+      <DependentUpon>201610110132141_changed eventColor to backgroundColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610110246154_added editable property.cs" />
+    <Compile Include="Migrations\201610110246154_added editable property.Designer.cs">
+      <DependentUpon>201610110246154_added editable property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610110247431_forgot to save that last.cs" />
+    <Compile Include="Migrations\201610110247431_forgot to save that last.Designer.cs">
+      <DependentUpon>201610110247431_forgot to save that last.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs" />
@@ -333,6 +345,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610102129486_after clone.resx">
       <DependentUpon>201610102129486_after clone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610110132141_changed eventColor to backgroundColor.resx">
+      <DependentUpon>201610110132141_changed eventColor to backgroundColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610110246154_added editable property.resx">
+      <DependentUpon>201610110246154_added editable property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610110247431_forgot to save that last.resx">
+      <DependentUpon>201610110247431_forgot to save that last.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

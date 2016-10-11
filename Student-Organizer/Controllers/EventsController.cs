@@ -29,7 +29,8 @@ namespace Student_Organizer.Controllers
         public ActionResult Index()
         {
             //var eventList = db.Events.ToList();
-            var eventList = db.Events.Where(g=> g.UserId == myUser.Id).ToList();
+            var eventList = db.Events.Where(g=> g.UserId == myUser.Id).ToList().GroupBy(x => x.eventID).Select(y => y.First()).ToList();
+            //var distinctEvents = eventList.GroupBy(x => x.eventID).Select(y => y.First());
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             string jsonEvents = SerializeCalendarEventList(eventList);
             return View(new Event() { calendarDataHolder = jsonEvents});
@@ -51,7 +52,7 @@ namespace Student_Organizer.Controllers
         {
             data.start = Convert.ToDateTime(data.startDate + " " + data.startTime);
             data.end = Convert.ToDateTime(data.endDate + " " + data.endTime);
-            data.eventID = (data.title + data.startTime + data.endTime);
+            data.eventID = (data.title + data.startDate + data.startTime);
             data.UserId = myUser.Id;
             db.Events.Add(data);
             db.SaveChanges();
@@ -85,11 +86,18 @@ namespace Student_Organizer.Controllers
             oldEvent.startTime = data.startTime;
             oldEvent.endDate = data.endDate;
             oldEvent.endTime = data.endTime;
+            oldEvent.backgroundColor = data.backgroundColor;
             oldEvent.start = Convert.ToDateTime(data.startDate + " " + data.startTime);
             oldEvent.end = Convert.ToDateTime(data.endDate + " " + data.endTime);
-            oldEvent.eventID = data.title + data.startDate + data.startTime;
+            oldEvent.eventID = ResetEventID(data);
             db.SaveChanges();
             Response.Redirect("http://localhost:35591/Events/Index");
+        }
+
+        public string ResetEventID(Event myEvent)
+        {
+            string eventID = myEvent.title + myEvent.UserId + myEvent.startDate + myEvent.startTime;
+            return eventID;
         }
 
         public void DeleteEvent(Event data)
@@ -118,26 +126,43 @@ namespace Student_Organizer.Controllers
             return myEvent;
         }
 
+        public List<string> SplitStringToList(string list)
+        {
+            List<string> NewList = list.Replace(" ", "").Split(',').ToList();
+            return NewList;
+        }
 
-        public void ShareEvents(List<string>ClassEnrollmentList)
+        public List<Event> CopyEventList(List<Event> EventList)
         {
             List<Event> tempList = new List<Event>();
-            List<Event> EventList = db.Events.Where(g => g.UserId == myUser.Id).Select(z=>z).ToList();
             for (int k = 0; k < EventList.Count; k++)
             {
                 tempList.Add(EventList[k]);
             }
+            return tempList;
+        }
+
+        public void ShareEvents(string emails, string backgroundColor)
+        {
+            List<string> ClassEnrollmentList = SplitStringToList(emails);
+
+            List<Event> EventList = db.Events.Where(g => g.UserId == myUser.Id).Where(h=>h.backgroundColor == backgroundColor).Select(z=>z).ToList();
+            List<Event> tempList = CopyEventList(EventList);
+
             for (int j = 0; j < ClassEnrollmentList.Count(); j++)
             {
                 for (int i = 0; i < tempList.Count(); i++)
                 {
                     var email = ClassEnrollmentList[j];
-                    tempList[i].UserId = db.Users.Where(v => v.Email == email).First().Id;
+                    tempList[i].UserId = db.Users.Where(v => v.Email == email).FirstOrDefault().Id;
+                    tempList[i].backgroundColor = "gray";
+                    tempList[i].editable = false;
                     db.Events.Add(tempList[i]);
                 }
-                
+                db.SaveChanges();
+                tempList = CopyEventList(EventList);
             }
-            db.SaveChanges();
+            Response.Redirect("http://localhost:35591/Events/Index");
         }
 
     }
